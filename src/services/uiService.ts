@@ -32,14 +32,25 @@ export class UIService {
       fileInfoElement.className = 'file-info-display'
       fileInfoElement.style.marginLeft = '1rem'
       setting.settingEl.appendChild(fileInfoElement)
+    } else {
+      fileInfoElement.empty()
     }
-
+  
     const updatedDate = new Date(key.updated).toLocaleString()
-
-    fileInfoElement.innerHTML = `
-      <strong>${this.translationService.t('file')}:</strong> ${key.name}<br/>
-      <strong>${this.translationService.t('size')}:</strong> ${key.size.toString()} bytes<br/>
-      <strong>${this.translationService.t('updated')}:</strong> ${updatedDate}
-    `
+  
+    const fileData = [
+      { label: this.translationService.t('file'), value: key.name },
+      { label: this.translationService.t('size'), value: `${key.size.toString()} bytes` },
+      { label: this.translationService.t('updated'), value: updatedDate }
+    ]
+  
+    fileData.forEach(data => {
+      const label = createEl('strong', { text: `${data.label}: ` })
+      const valueText = document.createTextNode(data.value)
+      
+      fileInfoElement.appendChild(label)
+      fileInfoElement.appendChild(valueText)
+      fileInfoElement.appendChild(createEl('br'))
+    })
   }
 }
