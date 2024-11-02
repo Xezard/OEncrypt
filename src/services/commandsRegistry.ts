@@ -62,6 +62,6 @@ export class CommandsRegistry {
 
   private getCommandId(command: PluginCommand): string {
     const className = command.constructor.name
-    return className.replace(/([A-Z])/g, '_$1').toUpperCase().replace(/^_/, '')
+    return className.replace(/([A-Z])/g, '_$1').toUpperCase().replace(/^_/, '').replace('_COMMAND', '')
   }
 }
