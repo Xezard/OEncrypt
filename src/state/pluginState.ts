@@ -61,7 +61,7 @@ export class PluginState {
     if (this.cachePassphrase && this.passphrase && (currentTime < this.passphraseSetTimestamp)) {
       return this.passphrase
     } else {
-      this.passphrase = ''
+      this.resetPassphrase()
     }
   }
 
