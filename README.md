@@ -1,7 +1,7 @@
 # OEncrypt
 
-![Paper](https://img.shields.io/badge/Tested%20on%20Obsidian-v.1.7.4-informational)
-[![GitHub](https://img.shields.io/github/license/Xezard/OEncrypt)](https://github.com/Xezard/OEncrypt/blob/master/LICENSE)
+![Obsidian](https://img.shields.io/badge/Tested%20on%20Obsidian-v.1.7.4-informational)
+[![License](https://img.shields.io/github/license/Xezard/OEncrypt)](https://github.com/Xezard/OEncrypt/blob/master/LICENSE)
 ![Lines of code](https://img.shields.io/endpoint?url=https://ghloc.vercel.app/api/Xezard/OEncrypt/badge?filter=.ts&label=Lines%20of%20code&color=blue)
 ![Code size](https://img.shields.io/github/languages/code-size/Xezard/OEncrypt)
 ![Repo size](https://img.shields.io/github/repo-size/Xezard/OEncrypt)
