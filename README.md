@@ -1,5 +1,8 @@
 # OEncrypt
 
+![demo.gif](docs%2Fdemo.gif)
+
+[![CI](https://github.com/Xezard/OEncrypt/actions/workflows/ci.yml/badge.svg)](https://github.com/Xezard/OEncrypt/actions/workflows/ci.yml)
 ![Obsidian](https://img.shields.io/badge/Tested%20on%20Obsidian-v.1.7.4-informational)
 [![License](https://img.shields.io/github/license/Xezard/OEncrypt)](https://github.com/Xezard/OEncrypt/blob/master/LICENSE)
 ![Lines of code](https://img.shields.io/endpoint?url=https://ghloc.vercel.app/api/Xezard/OEncrypt/badge?filter=.ts&label=Lines%20of%20code&color=blue)

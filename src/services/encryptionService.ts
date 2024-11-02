@@ -168,7 +168,7 @@ export class EncryptionService {
     const newFilePath = `${baseFilePath}${extension}`
 
     await this.app.vault.create(newFilePath, content)
-    await this.app.vault.delete(activeFile)
+    await this.app.fileManager.trashFile(activeFile)
     await this.app.workspace.openLinkText(newFilePath, '', false)
   }
 

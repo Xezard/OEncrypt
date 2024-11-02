@@ -30,7 +30,6 @@ export class UIService {
     if (!fileInfoElement) {
       fileInfoElement = document.createElement('div')
       fileInfoElement.className = 'file-info-display'
-      fileInfoElement.style.marginLeft = '1rem'
       setting.settingEl.appendChild(fileInfoElement)
     } else {
       fileInfoElement.empty()

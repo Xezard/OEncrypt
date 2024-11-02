@@ -66,9 +66,8 @@ export class PassphraseModal extends Modal implements PluginModal {
     
     const passphraseSetting = new Setting(this.contentEl).addText((text) => {
       this.input = text.inputEl
-
+      this.input.className = 'passphrase-input'
       this.input.type = 'password'
-      this.input.style.width = '100%'
 
       text.onChange((value) => {
         this.passphrase = value
