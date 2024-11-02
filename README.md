@@ -2,7 +2,7 @@
 
 ![Paper](https://img.shields.io/badge/Tested%20on%20Obsidian-v.1.7.4-informational)
 [![GitHub](https://img.shields.io/github/license/Xezard/OEncrypt)](https://github.com/Xezard/OEncrypt/blob/master/LICENSE)
-![Lines of code](https://img.shields.io/tokei/lines/github/Xezard/OEncrypt?label=lines%20of%20code)
+![Lines of code](https://img.shields.io/endpoint?url=https://ghloc.vercel.app/api/Xezard/OEncrypt/badge?filter=.ts&label=Lines%20of%20code&color=blue)
 ![Code size](https://img.shields.io/github/languages/code-size/Xezard/OEncrypt)
 ![Repo size](https://img.shields.io/github/repo-size/Xezard/OEncrypt)
 [![Discord chat](https://img.shields.io/discord/775493797702139914?color=blue&label=discord)](https://discord.gg/JZ9uZ5aXwf)
