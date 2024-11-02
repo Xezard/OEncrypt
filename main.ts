@@ -27,65 +27,64 @@ import { ModalsRegistry } from 'src/services/modalsRegistry'
 import { EditorExtensionsRegistry } from 'src/services/editorExtensionsRegistry'
 
 export default class OEncryptPlugin extends Plugin {
-	private state: PluginState
-	private translationService: TranslationService
-	private uiService: UIService
-	private settings: PluginSettings
-	private pgpService: PGPService
-	private modalsRegistry: ModalsRegistry
-	private encryptionService: EncryptionService
-	private commandsRegistry: CommandsRegistry
-	private eventRegistry: EventRegistry
-	private editorExtensionsRegistry: EditorExtensionsRegistry
+  private state: PluginState
+  private translationService: TranslationService
+  private uiService: UIService
+  private settings: PluginSettings
+  private pgpService: PGPService
+  private modalsRegistry: ModalsRegistry
+  private encryptionService: EncryptionService
+  private commandsRegistry: CommandsRegistry
+  private eventRegistry: EventRegistry
+  private editorExtensionsRegistry: EditorExtensionsRegistry
 
   async onload() {
-		this.state = new PluginState(this)
+    this.state = new PluginState(this)
 
-		await this.state.load()
+	await this.state.load()
 
-		this.translationService = new TranslationService(this.app)
-		this.uiService = new UIService(this.translationService)
-		this.settings = new PluginSettings(
-			this, 
-			this.state, 
-			this.translationService, 
-			this.uiService
-		)
+	this.translationService = new TranslationService(this.app)
+	this.uiService = new UIService(this.translationService)
+	this.settings = new PluginSettings(
+      this,
+	  this.state,
+	  this.translationService,
+	  this.uiService
+	)
 
-		this.addSettingTab(this.settings)
+	this.addSettingTab(this.settings)
 
-		this.pgpService = new PGPService(this.state)
-		this.modalsRegistry = new ModalsRegistry(this.app, this.state, this.translationService)
-		this.encryptionService = new EncryptionService(
-			this.app, 
-			this.state,
-			this.translationService, 
-			this.pgpService,
-			this.modalsRegistry
-		)
+	this.pgpService = new PGPService(this.state)
+	this.modalsRegistry = new ModalsRegistry(this.app, this.state, this.translationService)
+	this.encryptionService = new EncryptionService(
+      this.app,
+	  this.state,
+	  this.translationService,
+	  this.pgpService,
+	  this.modalsRegistry
+	)
 		
-		this.commandsRegistry = new CommandsRegistry(
-			this, 
-			this.translationService, 
-			this.encryptionService
-		)
+	this.commandsRegistry = new CommandsRegistry(
+      this,
+	  this.translationService,
+	  this.encryptionService
+	)
 
     await this.commandsRegistry.loadAndRegisterCommands()
+    this.eventRegistry = new EventRegistry(
+      this,
+	  this.translationService,
+	  this.encryptionService,
+	)
 
-		this.eventRegistry = new EventRegistry(
-			this, 
-			this.translationService, 
-			this.encryptionService, 
-		)
-
-		this.editorExtensionsRegistry = new EditorExtensionsRegistry(
-			this, 
-			this.translationService,
-			this.encryptionService
-		)
+	this.editorExtensionsRegistry = new EditorExtensionsRegistry(
+      this,
+	  this.translationService,
+	  this.encryptionService
+	)
   }
 
-	async onunload() {
+  async onunload() {
     await this.state.save()
   }
 }
