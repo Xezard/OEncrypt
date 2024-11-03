@@ -70,8 +70,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git pull --rebase origin master
-          git push origin master
+          git fetch origin master
+          git reset --soft origin/master
+          git push --force origin master
 
   build:
     runs-on: ubuntu-latest
