@@ -5,6 +5,11 @@ on:
     tags:
       - "*"
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Specify tag to release'
+        required: true
+        default: '1.0.0'
 
 env:
   PLUGIN_NAME: oencrypt
