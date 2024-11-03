@@ -133,6 +133,8 @@ jobs:
       - name: Create tag
         if: github.event_name == 'workflow_dispatch'
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git tag -a ${{ needs.update_version.outputs.tag_name }} -m "Release version ${{ needs.update_version.outputs.tag_name }}"
           git push origin ${{ needs.update_version.outputs.tag_name }}
 
