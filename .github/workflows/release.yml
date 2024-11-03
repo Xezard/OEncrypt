@@ -27,8 +27,9 @@ jobs:
           TAG_NAME=${{ github.ref }}
           TAG_NAME=${TAG_NAME#refs/tags/}
           if ! grep -q "\"$TAG_NAME\":" versions.json; then
-            LAST_VERSION=$(jq 'keys | .[-1]' versions.json)
-            jq --arg tag "$TAG_NAME" --arg last "$LAST_VERSION" '.[$tag] = $last' versions.json > tmp.json && mv tmp.json versions.json
+            LAST_VERSION=$(jq -r 'keys | .[-1]' versions.json)
+            PREVIOUS_VERSION=$(jq -r ".\"$LAST_VERSION\"" versions.json)
+            jq --arg tag "$TAG_NAME" --arg last "$PREVIOUS_VERSION" '.[$tag] = $last' versions.json > tmp.json && mv tmp.json versions.json
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
             git add versions.json
