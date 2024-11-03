@@ -35,10 +35,28 @@ jobs:
           git fetch origin
           git pull origin master --rebase
 
+      - name: Determine tag name
+        id: determine_tag
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            TAG_NAME="${{ github.event.inputs.tag }}"
+          else
+            TAG_NAME=${{ github.ref }}
+            TAG_NAME=${TAG_NAME#refs/tags/}
+          fi
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+
+      - name: Validate tag format
+        run: |
+          TAG_NAME=${{ env.TAG_NAME }}
+          if ! [[ "$TAG_NAME" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Error: Tag '$TAG_NAME' does not follow SemVer format (MAJOR.MINOR.PATCH)."
+            exit 1
+          fi
+
       - name: Update versions.json
         run: |
-          TAG_NAME=${{ github.ref }}
-          TAG_NAME=${TAG_NAME#refs/tags/}
+          TAG_NAME=${{ env.TAG_NAME }}
           if ! grep -q "\"$TAG_NAME\":" versions.json; then
             LAST_VERSION=$(jq -r 'keys | .[-1]' versions.json)
             PREVIOUS_VERSION=$(jq -r ".\"$LAST_VERSION\"" versions.json)
@@ -51,8 +69,7 @@ jobs:
 
       - name: Update package.json
         run: |
-          TAG_NAME=${{ github.ref }}
-          TAG_NAME=${TAG_NAME#refs/tags/}
+          TAG_NAME=${{ env.TAG_NAME }}
           CURRENT_VERSION=$(jq -r '.version' package.json)
           if [ "$CURRENT_VERSION" != "$TAG_NAME" ]; then
             jq --arg tag "$TAG_NAME" '.version = $tag' package.json > tmp.json && mv tmp.json package.json
@@ -62,8 +79,7 @@ jobs:
 
       - name: Update manifest.json
         run: |
-          TAG_NAME=${{ github.ref }}
-          TAG_NAME=${TAG_NAME#refs/tags/}
+          TAG_NAME=${{ env.TAG_NAME }}
           CURRENT_VERSION=$(jq -r '.version' manifest.json)
           if [ "$CURRENT_VERSION" != "$TAG_NAME" ]; then
             jq --arg tag "$TAG_NAME" '.version = $tag' manifest.json > tmp.json && mv tmp.json manifest.json
@@ -75,14 +91,14 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-      
+          
           git fetch origin master
-      
+          
           if ! git rebase origin/master; then
             echo "Rebase conflicts detected."
             exit 1
           fi
-      
+          
           git push origin master
 
   build:
