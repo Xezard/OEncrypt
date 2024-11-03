@@ -128,6 +128,12 @@ jobs:
           zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
           ls
 
+      - name: Create tag
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git tag -a ${{ env.TAG_NAME }} -m "Release version ${{ env.TAG_NAME }}"
+          git push origin ${{ env.TAG_NAME }}
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
