@@ -60,7 +60,10 @@ jobs:
 
       - name: Push changes
         run: |
-          git push origin HEAD:master
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git pull origin master --rebase
+          git push origin master
 
   build:
     runs-on: ubuntu-latest
