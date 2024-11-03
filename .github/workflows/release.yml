@@ -127,7 +127,6 @@ jobs:
           cp ./assets/styles.css ./assets/styles.css ${{ env.PLUGIN_NAME }}
           zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
           ls
-          echo "TAG_NAME=$(git tag --sort version:refname | tail -n 1)" >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
