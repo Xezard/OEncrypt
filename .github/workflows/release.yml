@@ -22,6 +22,13 @@ jobs:
         with:
           node-version: 16
 
+      - name: Sync with remote master
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git fetch origin
+          git reset --hard origin/master
+
       - name: Update versions.json
         run: |
           TAG_NAME=${{ github.ref }}
