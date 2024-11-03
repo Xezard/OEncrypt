@@ -27,7 +27,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git fetch origin
-          git reset --hard origin/master
+          git pull origin master --rebase
 
       - name: Update versions.json
         run: |
