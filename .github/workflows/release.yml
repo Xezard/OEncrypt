@@ -69,6 +69,14 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+      
+          git fetch origin master
+      
+          if ! git rebase origin/master; then
+            echo "Rebase conflicts detected."
+            exit 1
+          fi
+      
           git push origin master
 
   build:
