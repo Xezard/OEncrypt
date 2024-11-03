@@ -71,8 +71,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git fetch origin master
-          git reset --soft origin/master
-          git push --force origin master
+          git pull origin master --rebase
+          git push --force-with-lease origin master
 
   build:
     runs-on: ubuntu-latest
