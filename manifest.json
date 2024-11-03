@@ -1,21 +1,21 @@
 {
-	"id": "oencrypt",
-	"name": "OEncrypt",
-	"version": "1.0.1",
-	"minAppVersion": "0.15.0",
-	"description": "A plugin for Obsidian that encrypts and decrypts notes using PGP, ensuring the security of your sensitive information.",
-	"author": "Xezard",
-	"authorUrl": "https://xezard.me",
-	"fundingUrl": "https://xezard.me/donate",
-	"isDesktopOnly": false,
-	"repository": "https://github.com/xezard/oencrypt",
-	"keywords": [
-		"obsidian",
-		"plugin",
-		"pgp",
-		"encryption",
-		"cipher",
-		"password",
-		"security"
-	]
+  "id": "oencrypt",
+  "name": "OEncrypt",
+  "version": "1.0.2",
+  "minAppVersion": "0.15.0",
+  "description": "A plugin for Obsidian that encrypts and decrypts notes using PGP, ensuring the security of your sensitive information.",
+  "author": "Xezard",
+  "authorUrl": "https://xezard.me",
+  "fundingUrl": "https://xezard.me/donate",
+  "isDesktopOnly": false,
+  "repository": "https://github.com/xezard/oencrypt",
+  "keywords": [
+    "obsidian",
+    "plugin",
+    "pgp",
+    "encryption",
+    "cipher",
+    "password",
+    "security"
+  ]
 }
