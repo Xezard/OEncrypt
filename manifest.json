@@ -1,7 +1,7 @@
 {
 	"id": "oencrypt",
 	"name": "OEncrypt",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.15.0",
 	"description": "A plugin for Obsidian that encrypts and decrypts notes using PGP, ensuring the security of your sensitive information.",
 	"author": "Xezard",

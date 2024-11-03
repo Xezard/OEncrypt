@@ -1,6 +1,6 @@
 {
 	"name": "oencrypt",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A plugin for Obsidian that encrypts and decrypts notes using PGP, ensuring the security of your sensitive information.",
 	"main": "main.js",
 	"scripts": {
@@ -8,9 +8,17 @@
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "MIT",
+	"keywords": [		
+		"obsidian",
+		"plugin",
+		"pgp",
+		"encryption",
+		"cipher",
+		"password",
+		"security"
+	],
+	"author": "Xezard",
+	"license": "GPL-3.0",
 	"devDependencies": {
 		"@types/node": "^16.11.6",
 		"@types/pako": "^2.0.3",
